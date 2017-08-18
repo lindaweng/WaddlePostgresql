@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>After you have inputed information</title>
+   
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body id = "page-top">
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <a class="navbar-brand" href="#page-top">Waddle</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fa fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/show_all">All Waddles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#results-list">Results</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <section class="header" style="background-image:url(/img/penguin-group.jpg);background-repeat:no-repeat;background-size:cover;background-color:linear-gradient(to left, #5CC8F2, #0487D9);">
+      <div class="cta-content">
+        <div class="container">
+          <h2 style="color:white !important"><%=@output%></h2>
+        </div>
+      </div>
+      <div class="overlay"></div>
+    </section>
+
+    <section class="download bg-primary text-center" id="results-list">
+      <div class="container">
+        <div class="row">
+          <div class=" mx-auto">
+            <div class="section-heading text-center">
+          <h2>Create a new Waddle:</h2>
+          <hr>
+        </div>
+            <form method="POST" action="/create_groups">
+              <h4>Start:</h4>
+              <input type="text" name="location">
+              <h4>Destination:</h4>
+              <input type="text" name="destination">
+              <h4>Name:</h4>
+              <input type="text" name="name">
+              <h4>Time:</h4>
+              <input type="text" name="time">
+              <h4>Method of Transport:</h4>
+              <input type="text" name="method">
+              <h4></h4>
+              <input class = "btn btn-default" type="submit">
+              <hr>
+            </form>
+          </div>
+        </div>
+        <div clas = "row">
+          <a href = "/show_all" class = "btn btn-xl btn-outline">See All Waddles</a>
+        </div>
+      </div>
+      </section>
+      <section class="contact bg-primary" id="contact" style="background:#FF791D;">
+      <div class="container">
+        <h2>Contact</h2>
+        <div class = "row">
+          <div class = "col-sm-6">
+            <h3>Clarissa Xu</h3>
+          </div>
+          <div class = "col-sm-6">
+            <h3>Linda Weng</h3>
+          </div>
+          
+        </div>
+        <div class = "row">
+          <div class = "col-sm-6">
+            <ul class="list-inline list-social">
+              <li class="list-inline-item social-facebook">
+                <a href="https://www.facebook.com/clarissax.xu">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item social-github">
+                <a href="https://github.com/clarissa2448">
+                  <i class="fa fa-github"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class = "col-sm-6">
+            <ul class="list-inline list-social">
+              <li class="list-inline-item social-facebook">
+                <a href="https://www.facebook.com/linda.weng.1272">
+                  <i class="fa fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item social-github">
+                <a href="https://github.com/lindaweng">
+                  <i class="fa fa-github"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <p>&copy; 2017 Kode with Klossy Detroit</p>
+      </div>
+    </footer>
+    <!-- Custom scripts for this template -->
+    <script src="js/new-age.js"></script>
+    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/popper/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.js"></script>
+  
+      <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.js"></script>
+  </body>
+</html>
