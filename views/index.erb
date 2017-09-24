@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Waddle</title>
-  
+    <link rel="shortcut icon" href="img/penguin-logo.ico" length = 16px width = 16px>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -30,14 +30,14 @@
             <a class="nav-link" id = "about_nav" href="#about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  href="/show_all">All Waddles</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" id = "form_nav"href="#form">Sign Up</a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" id = "contact_nav"href="#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="/login">Login</a>
           </li>
         </ul>
       </div>
@@ -83,7 +83,7 @@
                   <div class="feature-item">
                     <i class="fa fa-globe text-primary"></i>
                     <h3>Eco-friendly</h3>
-                    <p class="text-muted">Help save the environment my waddling instead of driving!</p>
+                    <p class="text-muted">Help save the environment by waddling instead of driving!</p>
                   </div>
                 </div>
                 <div class="col-lg-3">
@@ -120,7 +120,7 @@
       <div class="container">
         <div class="section-heading text-center">
           <h2 style="color:black !important">Please enter your information:</h2>
-          <p class="text-muted" style="color:black !important">After you fill out your starting location, we will display waddles with similar destinations as you.</p>
+          <p class="text-muted" style="color:black !important">Sign up for an account to join a waddle!</p>
           <hr>
         </div>
         <div class = "text-center" >
@@ -130,9 +130,18 @@
                 
               <!--</div>-->
               <div class = "col-lg-6">
-              <form method="POST" action="/groups">
-                <h4 style="color:black !important">Starting Location</h4>
-                <input type="text" name="start">
+              <form method="POST" action="/create_account">
+                <h4 style="color:black !important">Name:</h4>
+                <input type="text" name="name" required>
+                <h4 style="color:black !important">Age:</h4>
+                <input type="text" name="age" required>
+                <h4 style="color:black !important">Email:</h4>
+                <p style="color:black !important">Will be used so other members in the waddle can contact you</p>
+                <input type="text" name="email" required>
+                <h4 style="color:black !important">Username:</h4>
+                <input type="text" name="username" required>
+                <h4 style="color:black !important">Password:</h4>
+                <input type="text" name="password" required>
                 <h4></h4>
                 <input type="submit" class = "btn btn-default">
               </form>

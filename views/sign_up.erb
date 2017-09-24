@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>When no waddles are available</title>
+    <title>After you have inputed information</title>
     <link rel="shortcut icon" href="img/penguin-logo.ico" length = 16px width = 16px>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -24,15 +24,6 @@
             <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/show_all">All Waddles</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#results-list">Results</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/account">My Account</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
           </li>
         </ul>
@@ -52,27 +43,26 @@
         <div class="row">
           <div class=" mx-auto">
             <div class="section-heading text-center">
-          <h2>Create a new Waddle:</h2>
+          <h2>Sign Up:</h2>
           <hr>
         </div>
-            <form method="POST" action="/create_groups">
-              <h4>Starting Location:</h4>
-              <input type="text" name="location" required>
-              <h4>Destination:</h4>
-              <input type="text" name="destination" required>
-              <h4>Time:</h4>
-              <input type="text" name="time" required>
-              <h4>Method of Transport:</h4>
-              <input type="text" name="method" required>
-              <input type="hidden" name="id" value="<%=@id%>">
+            <form method="POST" action="/create_account">
+              <h4>Name:</h4>
+              <input type="text" name="name" required>
+              <h4>Age:</h4>
+              <input type="text" name="age" required>
+              <h4>Email:</h4>
+              <p>Will be used so other members in your waddle can contact you</p>
+              <input type="email" name="email" required>
+              <h4>Username:</h4>
+              <input type="text" name="username" required>
+              <h4>Password:</h4>
+              <input type="password" name="password" required>
               <h4></h4>
               <input class = "btn btn-default" type="submit">
               <hr>
             </form>
           </div>
-        </div>
-        <div clas = "row">
-          <a href = "/show_all" class = "btn btn-xl btn-outline">See All Waddles</a>
         </div>
       </div>
       </section>

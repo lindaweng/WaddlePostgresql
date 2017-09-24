@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>After you have inputed information</title>
-   
+    <title>results</title>
+    <link rel="shortcut icon" href="img/penguin-logo.ico" length = 16px width = 16px>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   </head>
   <body id = "page-top">
@@ -73,17 +73,16 @@
               <div class = "row text-center">
                 <div class = "col-lg-4"></div>
                 <div class = col-lg-4>
+                    <hr>
                     <h4><%=@output%></h4>
                   <form method="POST" action="/submit">
                       <br>
-                      <h4>Name:</h4>
-                      <input type="text" name="name">
-                      <br>
                       <h4>Destination:</h4>
-                      <input type = "text" name = "destination">
+                      <input type = "text" name = "destination" required>
                       <h4>Method of Transport:</h4>
-                      <input type = "text" name = "method">
+                      <input type = "text" name = "method" required>
                       <input type = "text" name = "start" value = "<%=@location%>" style = "display:none !important;">
+                      <input type = "hidden" name = "id" value = "<%=@id%>">
                       <h4></h4>
                       <input class = "btn btn-default" type="submit">
                   </form>
@@ -172,13 +171,13 @@
       </div>
     </footer>
     <!-- Custom scripts for this template -->
-    <script src="js/new-age.js"></script>
-    <script src="vendor/jquery/jquery.js"></script>
-    <script src="vendor/popper/popper.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="../js/new-age.js"></script>
+    <script src="../vendor/jquery/jquery.js"></script>
+    <script src="../vendor/popper/popper.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.js"></script>
   
       <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.js"></script>
-    <script src="js/new-age.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.js"></script>
+    <script src="../js/new-age.js"></script>
   </body>
 </html>

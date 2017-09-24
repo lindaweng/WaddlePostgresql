@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>When no waddles are available</title>
+    <title>Join a waddle</title>
     <link rel="shortcut icon" href="img/penguin-logo.ico" length = 16px width = 16px>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -27,9 +27,6 @@
             <a class="nav-link" href="/show_all">All Waddles</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#results-list">Results</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/account">My Account</a>
           </li>
           <li class="nav-item">
@@ -41,7 +38,6 @@
     <section class="header" style="background-image:url(/img/penguin-group.jpg);background-repeat:no-repeat;background-size:cover;background-color:linear-gradient(to left, #5CC8F2, #0487D9);">
       <div class="cta-content">
         <div class="container">
-          <h2 style="color:white !important"><%=@output%></h2>
         </div>
       </div>
       <div class="overlay"></div>
@@ -52,19 +48,12 @@
         <div class="row">
           <div class=" mx-auto">
             <div class="section-heading text-center">
-          <h2>Create a new Waddle:</h2>
+          <h3>After you enter your starting location, we will display all waddles from that starting location.</h3>
           <hr>
         </div>
-            <form method="POST" action="/create_groups">
+            <form method="POST" action="/groups">
               <h4>Starting Location:</h4>
-              <input type="text" name="location" required>
-              <h4>Destination:</h4>
-              <input type="text" name="destination" required>
-              <h4>Time:</h4>
-              <input type="text" name="time" required>
-              <h4>Method of Transport:</h4>
-              <input type="text" name="method" required>
-              <input type="hidden" name="id" value="<%=@id%>">
+              <input type="text" name="start">
               <h4></h4>
               <input class = "btn btn-default" type="submit">
               <hr>
