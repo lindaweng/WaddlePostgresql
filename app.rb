@@ -15,12 +15,29 @@ class ApplicationController < Sinatra::Base
         erb :show_all
     end
     
-    get '/account' do
+    get '/account/:id' do
+        @id = params[:id]
+        @userAccount = Account.find(@id)
+        @name = @userAccount.name
+        @age = @userAccount.age
+        @username = @userAccount.username
+        @password = @userAccount.password
+        @email = @userAccount.email
+        @waddles = @userAccount.waddles
         erb :account
     end
     
     get '/login' do
         erb :login
+    end
+    
+    get '/sign_up' do
+        erb :sign_up
+    end
+    
+    get '/edit/:id' do
+        @id = params[:id]
+        erb :edit
     end
     
     post '/login' do
@@ -31,19 +48,23 @@ class ApplicationController < Sinatra::Base
         @accounts.each do |account|
             if account.username == @username and account.password == @password
                 @id = account.id
-            else
+                puts @id
                 count += 1
             end
         end
-        if count != 0
+        if count == 0
                 @output = "Wrong username or password."
                 erb :login
+        else
+            @userAccount = Account.find(@id)
+            @name = @userAccount.name
+            @age = @userAccount.age
+            @email = @userAccount.email
+            @waddles = @userAccount.waddles
+            erb :account
         end
-        @userAccount = Account.find(@id)
-        @name = @userAccount.name
-        @age = @userAccount.age
-        @email = @userAccount.email
-        erb :account
+       
+        
     end
     
     post '/create_account' do
@@ -53,7 +74,7 @@ class ApplicationController < Sinatra::Base
             @accounts = Account.all
             count = 0
             @accounts.each do |account|
-                if account.username == username
+                if account.username == @username
                     count += 1
                 end
             end
@@ -61,15 +82,40 @@ class ApplicationController < Sinatra::Base
                 @output = "That username is already taken. Please choose a different username."
                 erb :sign_up
             end
-            @account = Account.create(name: params[:name], age: params[:age], email: params[:email], username: params[:username], password: "#{params[:password]}")
+            @userAccount = Account.create(name: params[:name], age: params[:age], email: params[:email], username: params[:username], password: params[:password], waddles: "")
+            @id = @userAccount.id
             @username = params[:username]
+            @name = params[:name]
+            @age = params[:age]
+            @email = params[:email]
+            @waddles = ""
             erb :account
-        else
-            @output = "Please Complete All Fields" 
-            erb :sign_up
         end 
     end
 
+    post '/edit_account' do
+        @id = params[:id]
+        @userAccount = Account.find(@id)
+        if params[:name] != ""
+            @userAccount.update(name: params[:name])
+        elsif params[:age] != ""
+            @userAccount.update(age: params[:age])
+        elsif params[:email] != ""
+            @userAccount.update(email: params[:email])
+        elsif params[:username] != ""
+            @userAccount.update(username: params[:username])
+        elsif params[:password] != ""
+            @userAccount.update(password: params[:password])
+        end
+        @name = @userAccount.name
+        @age = @userAccount.age
+        @email = @userAccount.email
+        @username = @userAccount.username
+        @password = @userAccount.password
+        @waddles = @userAccount.waddles
+        erb :account
+    end
+    
     post '/groups' do
         @id = params[:id]
         userSchool = params[:start]
@@ -108,6 +154,7 @@ class ApplicationController < Sinatra::Base
     end
     
     get '/groupsagain/:start' do
+        @id = params[:id]
         userSchool = params[:start]
         # iterate through Post.all and find the matching location
         @posts = Post.all
@@ -138,9 +185,12 @@ class ApplicationController < Sinatra::Base
 
     post '/create_groups' do
         @id = params[:id]
-        if params[:location] != "" && params[:destination] != "" && params[:time] != "" && params[:name] != "" && params[:method]
-            @post = Post.create(location: params[:location], destination: params[:destination], date: params[:method], time: params[:time], penguins: "#{params[:name]}")
+        @userAccount = Account.find(@id)
+        if params[:location] != "" && params[:destination] != "" && params[:time] != "" && params[:method]
+            
+            @post = Post.create(location: params[:location], destination: params[:destination], date: params[:method], time: params[:time], penguins: "#{@userAccount.name}")
             @location = params[:location]
+            @userAccount.update(waddles: (@post.date + " from " + @post.location + " to " + @post.destination + " at " + @post.time + ", " + @userAccount.waddles).chomp(", "))
             erb :show
         else
             @output = "Please Complete All Fields" 
@@ -152,10 +202,11 @@ class ApplicationController < Sinatra::Base
         @id = params[:id]
         userEnd = params[:destination]
         userMethod = params[:method]
+        time = params[:time]
         @posts = Post.all
         count = 0
         @posts.each do |post|
-            if userEnd.downcase == post.destination.downcase and userMethod.downcase == post.date.downcase
+            if userEnd.downcase == post.destination.downcase and userMethod.downcase == post.date.downcase and time == post.time
                 @location = post.location
                 @destination = post.destination
                 @time = post.time
@@ -170,8 +221,10 @@ class ApplicationController < Sinatra::Base
             redirect "/groupsagain/#{userSchool.gsub(" ","%20")}"
         else
             @post = Post.find(@idnum)
-            @name = Account.find(@id).name
+            @userAccount = Account.find(@id)
+            @name = @userAccount.name
             @post.update(penguins: (@name + ", " + @post.penguins).chomp(", "))
+            @userAccount.update(waddles: (@post.date + " from " + @post.location + " to " + @post.destination + " at " + @post.time + ", " + @userAccount.waddles).chomp(", "))
             erb :show 
         end
     end

@@ -2,73 +2,100 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Waddle</title>
+    <title>Account</title>
     <link rel="shortcut icon" href="img/penguin-logo.ico" length = 16px width = 16px>
-    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
-    <link rel="stylesheet" href=".vendor/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="vendor/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    
-
   </head>
   <body id = "page-top">
-    <!--goes to about page-->
-    <!--<a href="/about">About</a>-->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+        <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background=linear-gradient(to left, #0487D9, #5CC8F2) !important;">
       <a class="navbar-brand" href="#page-top">Waddle</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fa fa-bars"></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse" id="navbarResponsive" style="background=linear-gradient(to left, #0487D9, #5CC8F2) !important;">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="/show_all">All Waddles</a>
           </li>
-          <li class="nav-itme">
-              <a class="nav-link" href="#join_waddle">Join a Waddle</a>
+          <li class="nav-item">
+            <a class="nav-link" href="#results">My Account</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" id = "contact_nav"href="#contact">Contact</a>
+            <a class="nav-link" href="#join_waddle">Join a Waddle</a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
         </ul>
       </div>
     </nav>
-    <!--Displays account info-->
+    <section class="header" style="background-image:url(/img/penguin-group.jpg);background-repeat:no-repeat;background-size:cover;background-color:linear-gradient(to left, #5CC8F2, #0487D9);">
+      <div class="cta-content">
+      </div>
       <div class="overlay"></div>
     </section>
     <!--<a href="/">Home</a>-->
     <!--<a href="/about">About</a>-->
-        <header class="masthead" style="background:linear-gradient(to left, #5CC8F2, #0487D9);">
-      <div class="container h-100">
-        <div class="row h-100">
-          <div class="col-lg-7 my-auto">
-            <h3>Name: <%=@name%></h3>
-            <h3>Age: <%=@age%></h3>
-            <h3>Email: <%=@email%></h3>
-            <h3>Username: <%=@username%></h3>
-            <h3>Password: <%=@password%></h3>
+    <section class="download bg-primary" id="results" style="background:linear-gradient(to left, #5CC8F2, #0487D9)">
+      <div class="container">
+        <div class="section-heading text-center">
+          <h3>My Account</h3>
+          <hr>
+        </div>
+
+          <div class="col-lg-12 my-auto">
+            <div class="container-fluid">
+              <div class="row text-center">
+                <div class="header" style="text-align: center;width: 150%" !important>
+                  <div class="feature-item">
+                    <h3>Name: <%=@name%></h3>
+                    <h3>Age: <%=@age%></h3>
+                    <h3>Email: <%=@email%></h3>
+                    <h3>Username: <%=@username%></h3>
+                    <h3>Password: <%=@password%></h3>
+                    <h3>Waddles you are signed up for: <%=@waddles%></h3>
+                    <br>
+                    <div clas = "row">
+                    <a href = "/edit/<%=@id%>" class = "btn btn-xl btn-outline">Edit Account</a>
+                    <a href = "/delete>" class = "btn btn-xl btn-outline">Delete Account</a>
+                    <p>This is cannot be undone</p>
+                    </div>
+                  </div>
+                  </div>
+              </div>
+              
+            <div class = "row text-center">
+              <div class = "col-lg-4"></div>
+              <div class = col-lg-4>
+              </div>
+              <div class = col-lg-4></div>
+            </div>
           </div>
         </div>
       </div>
-    </header>
-    <section class="download bg-primary text-center" id="join_waddle">
+    </section>
+    <section class="download bg-primary text-center" id="join_waddle" style="background: white">
       <div class="container">
         <div class="row">
           <div class=" mx-auto">
-            <div class="section-heading text-center">
-          <h3>After you enter your starting location, we will display all waddles from that starting location.</h3>
-          <hr>
-        </div>
+            <div class="section-heading text-center" style="color: black" !important>
+              <h3>After you enter your starting location, we will display all waddles from that starting location.</h3>
+              <hr>
+            </div>
             <form method="POST" action="/groups">
-              <h4>Starting Location:</h4>
-              <input type="text" name="start" required>
-              <input type="hidden" name="id" value="<%=@id%>">
+              <h4 style="color: black" !important>Starting Location:</h4>
+              <input type="text" name="start">
+              <input type = "hidden" name = "id" value = "<%=@id%>">
               <h4></h4>
               <input class = "btn btn-default" type="submit">
               <hr>
@@ -76,12 +103,10 @@
           </div>
         </div>
         <div clas = "row">
-          <a href = "/show_all" class = "btn btn-xl btn-outline">See All Waddles</a>
+          <a href = "/show_all" class = "btn btn-xl btn-outline" style="color: black" !important>See All Waddles</a>
         </div>
       </div>
-    </section>
-    <!--Contact-->
-    
+      </section>
     <section class="contact bg-primary" id="contact" style="background:#FF791D;">
       <div class="container">
         <h2>Contact</h2>
@@ -132,15 +157,13 @@
       </div>
     </footer>
     <!-- Custom scripts for this template -->
-    
-    
-    <!--Bootstrap Core JS-->
-    <!--<script src="vendor/jquery/jquery.js"></script>-->
-    <!--<script src="vendor/popper/popper.js"></script>-->
-    <!--<script src="vendor/bootstrap/js/bootstrap.js"></script>-->
+    <script src="../js/new-age.js"></script>
+    <script src="../vendor/jquery/jquery.js"></script>
+    <script src="../vendor/popper/popper.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.js"></script>
   
       <!-- Plugin JavaScript -->
-    <!--<script src="vendor/jquery-easing/jquery.easing.js"></script>-->
-    <script src="js/new-age.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.js"></script>
+    <script src="../js/new-age.js"></script>
   </body>
 </html>
