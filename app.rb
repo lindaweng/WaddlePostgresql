@@ -6,13 +6,15 @@ require "sinatra/activerecord"
 require "./models.rb"
 require "./modelsAccount.rb"
 # set :database, "waddle.sql"
+
+# version 37 shows home page, but databases do not work on heroku
 require 'active_record'
 
 ActiveRecord::Base.establish_connection({
-  adapter:  'mysql2',
+  adapter:  'postgresql',
   host: 'localhost',
   username: 'lindaweng',
-  password: '',
+  password: "password",
   database: 'waddle'
 })
 

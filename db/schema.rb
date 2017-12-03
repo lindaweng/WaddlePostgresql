@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20170924155739) do
 
-  create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "accounts", force: :cascade do |t|
     t.string "name"
     t.string "age"
     t.string "email"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170924155739) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "posts", force: :cascade do |t|
     t.string "location"
     t.string "destination"
     t.string "date"
