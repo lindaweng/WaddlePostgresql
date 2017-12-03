@@ -3,7 +3,7 @@ ruby '2.3.4'
 
 gem "sinatra-activerecord"
 
-group :production, :test do # <<<< :development, not devlopment
+group :production do #, :test do # <<<< :development, not devlopment
   gem "rake"
   gem 'mysql2'
   gem 'pg'
