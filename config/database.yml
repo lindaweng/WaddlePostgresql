@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: waddle
-  username: 'lindaweng'
+  username: 'ubuntu'
   pool: 5
   host: 'localhost'
   password: "password"

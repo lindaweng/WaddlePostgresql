@@ -7,15 +7,17 @@ require "./modelsAccount.rb"
 
 # version 50 shows home page, but databases do not work on heroku
 require 'active_record'
+puts ActiveRecord::Base.connection_config()
 
-ActiveRecord::Base.establish_connection({
-  adapter:  'postgresql',
-  host: 'localhost',
-  username: 'lindaweng',
-  password: "password",
-  database: 'waddle'
-})
+# ActiveRecord::Base.establish_connection({
+#   adapter:  'postgresql',
+#   host: 'localhost',
+#   username: 'ubuntu',
+#   password: "password",
+#   database: 'waddle'
+# })
 
+puts ActiveRecord::Base.connection_config()
 # Website for Mysql: https://community.c9.io/t/setting-up-mysql/1718
 # https://www.wikihow.com/Create-a-Database-in-MySQL
 # https://dev.mysql.com/doc/
