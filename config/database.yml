@@ -1,6 +1,5 @@
 development:
   adapter: postgresql
-  encoding: utf8
   database: waddle
   username: 'lindaweng'
   host: <%=ENV['localhost']%>
