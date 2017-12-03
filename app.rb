@@ -1,10 +1,15 @@
 require 'bundler'
 Bundler.require
+require 'mysql2'
 require "sinatra"
 require "sinatra/activerecord"
 require "./models.rb"
 require "./modelsAccount.rb"
-set :database, "sqlite3:myblogdb.sqlite3"
+# set :database, "waddle.sql"
+
+# Website for Mysql: https://community.c9.io/t/setting-up-mysql/1718
+# https://www.wikihow.com/Create-a-Database-in-MySQL
+# https://dev.mysql.com/doc/
 
 class ApplicationController < Sinatra::Base
     get '/' do
@@ -68,30 +73,28 @@ class ApplicationController < Sinatra::Base
     end
     
     post '/create_account' do
-        if params[:name] != "" && params[:age] != "" && params[:email] != "" && params[:username] != "" && params[:password] != ""
-            # find if there is already an existing username
-            @username = params[:username]
-            @accounts = Account.all
-            count = 0
-            @accounts.each do |account|
-                if account.username == @username
-                    count += 1
-                end
+        # find if there is already an existing username
+        @username = params[:username]
+        @accounts = Account.all
+        count = 0
+        @accounts.each do |account|
+            if account.username == @username
+                count += 1
             end
-            if count != 0
-                @output = "That username is already taken. Please choose a different username."
-                erb :sign_up
-            end
-            @userAccount = Account.create(name: params[:name], age: params[:age], email: params[:email], username: params[:username], password: params[:password], waddles: "")
-            @id = @userAccount.id
-            @username = params[:username]
-            @name = params[:name]
-            @age = params[:age]
-            @email = params[:email]
-            @waddles = ""
-            erb :account
-        end 
-    end
+        end
+        if count != 0
+            @output = "That username is already taken. Please choose a different username."
+            erb :sign_up
+        end
+        @userAccount = Account.create(name: params[:name], age: params[:age], email: params[:email], username: params[:username], password: params[:password], waddles: "")
+        @id = @userAccount.id
+        @username = params[:username]
+        @name = params[:name]
+        @age = params[:age]
+        @email = params[:email]
+        @waddles = ""
+        erb :account
+    end 
 
     post '/edit_account' do
         @id = params[:id]

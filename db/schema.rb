@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170924155739) do
 
-  create_table "accounts", force: :cascade do |t|
+  create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "age"
     t.string "email"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20170924155739) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", force: :cascade do |t|
+  create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "location"
     t.string "destination"
     t.string "date"
