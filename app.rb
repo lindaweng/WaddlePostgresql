@@ -6,6 +6,15 @@ require "sinatra/activerecord"
 require "./models.rb"
 require "./modelsAccount.rb"
 # set :database, "waddle.sql"
+require 'active_record'
+
+ActiveRecord::Base.establish_connection({
+  adapter:  'mysql2',
+  host: 'localhost',
+  username: 'lindaweng',
+  password: '',
+  database: 'waddle'
+})
 
 # Website for Mysql: https://community.c9.io/t/setting-up-mysql/1718
 # https://www.wikihow.com/Create-a-Database-in-MySQL
