@@ -1,6 +1,5 @@
 require 'bundler'
 Bundler.require
-require 'mysql2'
 require "sinatra"
 require "sinatra/activerecord"
 require "./models.rb"
