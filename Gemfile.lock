@@ -27,7 +27,6 @@ GEM
     mime-types-data (3.2016.0521)
     minitest (5.10.3)
     mustermann (1.0.1)
-    mysql2 (0.4.10)
     netrc (0.11.0)
     pg (0.21.0)
     pry (0.11.3)
@@ -63,7 +62,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  mysql2
   pg
   pry
   rake
