@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Show- after you have joined a waddle</title>
-    
+    <link rel="shortcut icon" href="img/penguin-logo.ico" length = 16px width = 16px>
       
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -63,8 +63,8 @@
           <%end%>
         </div>
         <div class = "col-lg-12 text-center">
-          
-          <a class = "btn btn-outline btn-xl" href = "/#form">Sign Up</a>
+          <input type="hidden" name="id" value="<%=@id%>">
+          <a class = "btn btn-outline btn-xl" href = "/login#join_waddle">Sign Up</a>
         </div>
         
       </div>

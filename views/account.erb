@@ -63,7 +63,8 @@
                     <h3>Email: <%=@email%></h3>
                     <h3>Username: <%=@username%></h3>
                     <h3>Password: <%=@password%></h3>
-                    <h3>Waddles you are signed up for: <%=@waddles%></h3>
+                    <h3>Waddles you are signed up for: </h3>
+                    <h3><%=@waddles%></h3>
                     <br>
                     <div clas = "row">
                     <a href = "/edit/<%=@id%>" class = "btn btn-xl btn-outline">Edit Account</a>
@@ -95,7 +96,7 @@
             </div>
             <form method="POST" action="/groups">
               <h4 style="color: black" !important>Starting Location:</h4>
-              <input type="text" name="start">
+              <input type="text" name="start" required>
               <input type = "hidden" name = "id" value = "<%=@id%>">
               <h4></h4>
               <input class = "btn btn-default" type="submit">
@@ -104,7 +105,8 @@
           </div>
         </div>
         <div clas = "row">
-          <a href = "/show_all" class = "btn btn-xl btn-outline" style="color: black" !important>See All Waddles</a>
+          <input type="hidden" name="id" value="<%=@id%>">
+          <a href = "/show_all" class = "btn btn-xl btn-outline" style="color: black" !important target="_blank">See All Waddles</a>
         </div>
       </div>
       </section>
