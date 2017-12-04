@@ -105,19 +105,19 @@
             <hr>
             
             <form method="POST" action="/create_groups">
-              <h4>Start:</h4>
-              <input type="text" name="location">
+              <h4>Starting Location:</h4>
+              <input type="text" name="location" required>
               <h4>Destination:</h4>
-              <input type="text" name="destination">
-              <h4>Name:</h4>
-              <input type="text" name="name">
+              <input type="text" name="destination" required>
               <h4>Time:</h4>
-              <input type="text" name="time">
+              <p>Please include AM or PM</p>
+              <input type="text" name="time" required>
               <h4>Method of Transport:</h4>
-              <input type="text" name="method">
+              <input type="text" name="method" required>
+              <input type="hidden" name="id" value="<%=@id%>">
               <h4></h4>
-              <br>
               <input class = "btn btn-default" type="submit">
+              <hr>
             </form>
             
           </div>
