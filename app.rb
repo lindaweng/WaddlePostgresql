@@ -108,13 +108,14 @@ class ApplicationController < Sinatra::Base
         @userAccount = Account.find(@id)
         if params[:name] != ""
             @userAccount.update(name: params[:name])
-        elsif params[:age] != ""
+        end
+        if params[:age] != ""
             @userAccount.update(age: params[:age])
-        elsif params[:email] != ""
+        end
+        if params[:email] != ""
             @userAccount.update(email: params[:email])
-        elsif params[:username] != ""
-            @userAccount.update(username: params[:username])
-        elsif params[:password] != ""
+        end
+        if params[:password] != ""
             @userAccount.update(password: params[:password])
         end
         @name = @userAccount.name
