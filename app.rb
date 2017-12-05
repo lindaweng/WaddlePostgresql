@@ -2,7 +2,7 @@
 #   1 | Linda Weng  | 15  | myemail@gmail.com         |            | supersecretpassword | walking from Novi High School to Jamestown at 2:10 PM   
 
 require 'bundler'
-Bundler.requires
+Bundler.require
 require "sinatra"
 require "sinatra/activerecord"
 require "./models.rb"
