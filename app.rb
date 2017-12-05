@@ -1,5 +1,8 @@
+#  2 | Clarissa Xu | 17  | clarissa_xu24@outlook.com | clarissaxu | waddle              | waddling from Northville High School to Chase Farm at 2:30 PM | 2017-12-04 01:36:13.487517 | 2017-12-04 01:36:52.088321
+#   1 | Linda Weng  | 15  | myemail@gmail.com         |            | supersecretpassword | walking from Novi High School to Jamestown at 2:10 PM   
+
 require 'bundler'
-Bundler.require
+Bundler.requires
 require "sinatra"
 require "sinatra/activerecord"
 require "./models.rb"
@@ -25,6 +28,13 @@ class ApplicationController < Sinatra::Base
     get '/show_all' do
         @id = params[:id]
         erb :show_all
+    end
+    
+    get '/waddle_edit/:id' do
+        @id = params[:id]
+        @userAccount = Account.find(@id)
+        @name = @userAccount.name
+        erb :waddle_edit
     end
     
     get '/account/:id' do
@@ -75,8 +85,6 @@ class ApplicationController < Sinatra::Base
             @waddles = @userAccount.waddles
             erb :account
         end
-       
-        
     end
     
     post '/create_account' do
@@ -93,7 +101,7 @@ class ApplicationController < Sinatra::Base
             @output = "That username is already taken. Please choose a different username."
             erb :sign_up
         end
-        @userAccount = Account.create(name: params[:name], age: params[:age], email: params[:email], username: params[:username], password: params[:password], waddles: "")
+        @userAccount = Account.create(name: params[:name], age: params[:age], email: params[:email], username: params[:username], password: params[:password], waddles: [])
         @id = @userAccount.id
         @username = params[:username]
         @name = params[:name]
@@ -125,6 +133,11 @@ class ApplicationController < Sinatra::Base
         @password = @userAccount.password
         @waddles = @userAccount.waddles
         erb :account
+    end
+    post '/waddle_edit' do
+        @id = params[:id]
+        @idPost = params[:waddleNum]
+        
     end
     
     post '/groups' do
@@ -234,8 +247,10 @@ class ApplicationController < Sinatra::Base
             @post = Post.find(@idnum)
             @userAccount = Account.find(@id)
             @name = @userAccount.name
-            @post.update(penguins: (@name + ", " + @post.penguins).chomp(", "))
-            @userAccount.update(waddles: (@post.date + " from " + @post.location + " to " + @post.destination + " at " + @post.time + ", " + @userAccount.waddles).chomp(", "))
+            @waddles = @userAccount.waddles
+            @penguins = @post.penguins
+            @post.update(penguins: @penguins.push(@name))
+            @userAccount.update(waddles: @waddles.push(@post.date + " from " + @post.location + " to " + @post.destination + " at " + @post.time + ", " + @userAccount.waddles))
             erb :show 
         end
     end

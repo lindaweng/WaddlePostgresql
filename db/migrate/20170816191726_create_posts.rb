@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
         t.string :destination
         t.string :date
         t.string :time
-        t.string :penguins
+        t.string :penguins, array: true, default: []
         t.timestamps null: false
     end
   end

@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170924155739) do
     t.string "email"
     t.string "username"
     t.string "password"
-    t.string "waddles"
+    t.string "waddles", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20170924155739) do
     t.string "destination"
     t.string "date"
     t.string "time"
-    t.string "penguins"
+    t.string "penguins", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

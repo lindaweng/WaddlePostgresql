@@ -6,7 +6,7 @@ class CreateAccounts < ActiveRecord::Migration[5.1]
         t.string :email
         t.string :username
         t.string :password
-        t.string :waddles
+        t.string :waddles, array: true, default: []
         t.timestamps null: false
       end
   end
