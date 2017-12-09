@@ -161,7 +161,10 @@ class ApplicationController < Sinatra::Base
         if @waddles.length == 1
             @userAccount.update(waddles: [])
         end
-        @post.update(penguins: @penguins.delete(@name))
+        @post.update(penguins: @penguins.to_a - [@name])
+        if @penguins.length == 1
+            @post.update(penguins: [])
+        end
         @name = @userAccount.name
         @age = @userAccount.age
         @email = @userAccount.email
