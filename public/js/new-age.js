@@ -35,7 +35,7 @@
         }
     });
 
-// })(jQuery); // End of use strict
+})(jQuery); // End of use strict
 $("#lm").click(function() {
     console.log("here")
     $('html, body').animate({
