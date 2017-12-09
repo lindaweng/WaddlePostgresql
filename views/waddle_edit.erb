@@ -43,10 +43,10 @@
         <div class="row">
           <div class=" mx-auto">
             <div class="section-heading text-center">
-          <h2>Waddles you are currently signed up for:</h2>
+          <h3>Waddles you are currently signed up for:</h3>
           <hr>
         <div class="row text-center ">
-          <%@posts = Post.where("penguins like ?", "%" + @name + "%" %>
+          <%@posts = Post.where("'#{@name}' = ANY (penguins)")%>
           <%@posts.each do |post| %>
             <div class="col-lg-3">
               <div class="feature-item">
