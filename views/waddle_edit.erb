@@ -21,7 +21,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">Log Out</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/account/<%=@id%>">My Account</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
@@ -46,7 +49,7 @@
           <h2>Waddles you are currently signed up for:</h2>
           <hr>
         <div class="row text-center ">
-          <%@posts = Post.where("penguins like ?", "%" + @name + "%" %>
+          <%@posts = Post.where("'#{@name}' = ANY (penguins)")%>
           <%@posts.each do |post| %>
             <div class="col-lg-3">
               <div class="feature-item">
