@@ -64,7 +64,7 @@
                     <h3>Username: <%=@username%></h3>
                     <h3>Password: <%=@password%></h3>
                     <h3>Waddles you are signed up for: </h3>
-                    <h3><%=@waddles%></h3>
+                    <h3><%=@waddles.join(", ")%></h3>
                     <br>
                     <hr>
                     <a href = "/waddle_edit/<%=@id%>" class = "btn btn-xl btn-outline">Remove from a Waddle</a>
