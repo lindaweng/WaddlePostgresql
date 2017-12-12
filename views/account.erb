@@ -22,10 +22,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive" style="background=linear-gradient(to left, #0487D9, #5CC8F2) !important;">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/">Log Out</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/show_all">All Waddles</a>
+            <a class="nav-link" href="/show_all/<%=@id%>">All Waddles</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#results">My Account</a>
@@ -107,8 +107,7 @@
           </div>
         </div>
         <div clas = "row">
-          <input type="hidden" name="id" value="<%=@id%>">
-          <a href = "/show_all" class = "btn btn-xl btn-outline" style="color: black" !important target="_blank">See All Waddles</a>
+          <a href = "/show_all/<%=@id%>" class = "btn btn-xl btn-outline" style="color: black" !important target="_blank">See All Waddles</a>
         </div>
       </div>
       </section>

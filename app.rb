@@ -18,31 +18,13 @@ require 'active_record'
 #   password: "password",
 #   database: 'waddle'# 
 
-require 'bundler'
-Bundler.require
-require "sinatra"
-require "sinatra/activerecord"
-require "./models.rb"
-require "./modelsAccount.rb"
-require 'active_record'
-
-# puts ActiveRecord::Base.connection_config()
-
-# ActiveRecord::Base.establish_connection({
-#   adapter:  'postgresql',
-#   host: 'localhost',
-#   username: 'ubuntu',
-#   password: "password",
-#   database: 'waddle'
-# })
-
 
 class ApplicationController < Sinatra::Base
     get '/' do
         erb :index
     end
     
-    get '/show_all' do
+    get '/show_all/:id' do
         @id = params[:id]
         erb :show_all
     end
