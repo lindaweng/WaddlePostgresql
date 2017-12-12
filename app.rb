@@ -1,6 +1,7 @@
 #  2 | Clarissa Xu | 17  | clarissa_xu24@outlook.com | clarissaxu | waddle              | waddling from Northville High School to Chase Farm at 2:30 PM | 2017-12-04 01:36:13.487517 | 2017-12-04 01:36:52.088321
 #   1 | Linda Weng  | 15  | myemail@gmail.com         |            | supersecretpassword | walking from Novi High School to Jamestown at 2:10 PM   
-
+# <Account id: 2, name: "Taylor Want", age: "25", email: "taylor.want@gmail.com", username: "taylorwant", password: "Seize@0pportunity", waddles: [], created_at: "2017-12-05 14:31:24", updated_at: "2017-12-05 14:31:24">
+#Post id: 1, location: "Novi High School", destination: "Jamestown", date: "walking", time: "2:10 PM", penguins: ["Linda Weng"], created_at: "2017-12-06 00:41:00", updated_at: "2017-12-09 02:51:19"
 require 'bundler'
 Bundler.require
 require "sinatra"
@@ -18,23 +19,6 @@ require 'active_record'
 #   password: "password",
 #   database: 'waddle'# 
 
-require 'bundler'
-Bundler.require
-require "sinatra"
-require "sinatra/activerecord"
-require "./models.rb"
-require "./modelsAccount.rb"
-require 'active_record'
-
-# puts ActiveRecord::Base.connection_config()
-
-# ActiveRecord::Base.establish_connection({
-#   adapter:  'postgresql',
-#   host: 'localhost',
-#   username: 'ubuntu',
-#   password: "password",
-#   database: 'waddle'
-# })
 
 
 class ApplicationController < Sinatra::Base
@@ -249,7 +233,7 @@ class ApplicationController < Sinatra::Base
             @post = Post.create(location: params[:location], destination: params[:destination], date: params[:method], time: params[:time], penguins: ["#{@userAccount.name}"])
             @location = params[:location]
             @waddles = @userAccount.waddles
-            @userAccount.update(waddles: @waddles.push(@post.date + " from " + @post.location + " to " + @post.destination + " at " + @post.time + ", " + @userAccount.waddles))
+            @userAccount.update(waddles: @waddles.push(@post.date + " from " + @post.location + " to " + @post.destination + " at " + @post.time))
             erb :show
         else
             @output = "Please Complete All Fields" 
