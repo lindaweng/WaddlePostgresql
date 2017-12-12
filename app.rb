@@ -249,7 +249,7 @@ class ApplicationController < Sinatra::Base
             @post = Post.create(location: params[:location], destination: params[:destination], date: params[:method], time: params[:time], penguins: ["#{@userAccount.name}"])
             @location = params[:location]
             @waddles = @userAccount.waddles
-            @userAccount.update(waddles: @waddles.push(@post.date + " from " + @post.location + " to " + @post.destination + " at " + @post.time + ", " + @userAccount.waddles))
+            @userAccount.update(waddles: @waddles.push(@post.date + " from " + @post.location + " to " + @post.destination + " at " + @post.time))
             erb :show
         else
             @output = "Please Complete All Fields" 
