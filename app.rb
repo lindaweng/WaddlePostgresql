@@ -17,14 +17,16 @@ require 'active_record'
 #   username: 'ubuntu',
 #   password: "password",
 #   database: 'waddle'# 
-
+# get '/' do
+#     erb :index
+# end
 
 class ApplicationController < Sinatra::Base
     get '/' do
-        erb :index
+        erb :index #starts off at index, once loaded
     end
     
-    get '/show_all/:id' do
+    get '/show_all/:id' do 
         @id = params[:id]
         erb :show_all
     end
@@ -36,7 +38,7 @@ class ApplicationController < Sinatra::Base
         erb :waddle_edit
     end
     
-    get '/account/:id' do
+    get '/account/:id' do #loads account info
         @id = params[:id]
         @userAccount = Account.find(@id)
         @name = @userAccount.name
@@ -48,11 +50,11 @@ class ApplicationController < Sinatra::Base
         erb :account
     end
     
-    get '/login' do
+    get '/login' do #loads page
         erb :login
     end
     
-    get '/sign_up' do
+    get '/sign_up' do #loads page
         erb :sign_up
     end
     
@@ -61,12 +63,12 @@ class ApplicationController < Sinatra::Base
         erb :edit
     end
     
-    post '/login' do
+    post '/login' do #executes at /login
         @username = params[:username]
         @password = params[:password]
         count = 0
         @accounts = Account.all
-        @accounts.each do |account|
+        @accounts.each do |account| #checks all accounts for match
             if account.username == @username and account.password == @password
                 @id = account.id
                 puts @id
@@ -366,7 +368,7 @@ class ApplicationController < Sinatra::Base
         erb :account
     end 
 
-    post '/edit_account' do
+    post '/edit_account' do #updates to account
         @id = params[:id]
         @userAccount = Account.find(@id)
         if params[:name] != ""
