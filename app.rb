@@ -1,5 +1,5 @@
-#  2 | Clarissa Xu | 17  | clarissa_xu24@outlook.com | clarissaxu | waddle              | waddling from Northville High School to Chase Farm at 2:30 PM | 2017-12-04 01:36:13.487517 | 2017-12-04 01:36:52.088321
-#   1 | Linda Weng  | 15  | myemail@gmail.com         |            | supersecretpassword | walking from Novi High School to Jamestown at 2:10 PM   
+# https://www.postgresql.org/docs/current/static/app-psql.html
+# https://www.postgresql.org/docs/9.1/static/tutorial-select.html
 
 require 'bundler'
 Bundler.require
