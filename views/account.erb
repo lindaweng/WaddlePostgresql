@@ -64,7 +64,7 @@
                     <h3>Username: <%=@username%></h3>
                     <h3>Password: <%=@password%></h3>
                     <h3>Waddles you are signed up for: </h3>
-                    <!--<%=@waddles.each do |waddle, map|%>-->
+                    
                     <h3><%=@waddles.join(", ")%></h3>
                     <br>
                     <div clas = "row" style="text-align:center">
@@ -72,8 +72,8 @@
                       <hr>
                       <a href = "/edit/<%=@id%>" class = "btn btn-xl btn-outline">Edit Account</a>
                       <hr>
-                      <a href = "/delete>" class = "btn btn-xl btn-outline">Delete Account</a>
-                      <p>This is cannot be undone</p>
+                      <!--<a href = "/delete>" class = "btn btn-xl btn-outline">Delete Account</a>-->
+                      <!--<p>This is cannot be undone</p>-->
                     </div>
                   </div>
                   </div>
