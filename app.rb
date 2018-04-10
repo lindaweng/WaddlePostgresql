@@ -150,7 +150,7 @@ class ApplicationController < Sinatra::Base
         end
         @waddles.each do |waddle|
             if (waddle.include? @post.location) && (waddle.include? @post.destination) && (waddle.include? @post.date) && (waddle.include? @post.time)
-                @userAccount.update(waddles: @waddles.delete(waddle))
+                @userAccount.update(waddles: @waddles - [waddle])
             end
         end
         @post.update(penguins: @penguins.to_a - [@name])
