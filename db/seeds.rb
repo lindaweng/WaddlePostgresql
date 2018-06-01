@@ -1,0 +1,1 @@
+Post.create(location: "Novi High School", destination: "Jamestown", date: "walking", time: "2 PM", penguins: ["Linda"])

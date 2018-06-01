@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20180601191305) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "feedback", force: :cascade do |t|
+  create_table "feedbacks", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "feedback"

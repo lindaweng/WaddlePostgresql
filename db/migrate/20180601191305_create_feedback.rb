@@ -1,6 +1,6 @@
 class CreateFeedback < ActiveRecord::Migration[5.1]
   def change
-    create_table :feedback do |t|
+    create_table :feedbacks do |t|
         t.string :name
         t.string :email
         t.string :feedback
