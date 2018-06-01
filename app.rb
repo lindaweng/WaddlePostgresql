@@ -1,5 +1,6 @@
 # https://www.postgresql.org/docs/current/static/app-psql.html
 # https://www.postgresql.org/docs/9.1/static/tutorial-select.html
+# http://www.postgresqltutorial.com/postgresql-update/
 # Profile pic how to https://www.w3schools.com/css/tryit.asp?filename=trycss_css_image_overlay_opacity
 
 require 'bundler'
@@ -62,6 +63,11 @@ class ApplicationController < Sinatra::Base
     get '/edit/:id' do
         @id = params[:id]
         erb :edit
+    end
+    
+    post '/feedback' do
+        Feedback.create(name: params[:name], email: params[:email], feedback: params[:feedback])
+        erb :feedback
     end
     
     post '/login' do #executes at /login
