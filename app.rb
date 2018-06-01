@@ -9,6 +9,7 @@ require "sinatra"
 require "sinatra/activerecord"
 require "./models.rb"
 require "./modelsAccount.rb"
+require "./modelsFeedback.rb"
 require 'active_record'
 
 # puts ActiveRecord::Base.connection_config()

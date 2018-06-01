@@ -6,4 +6,4 @@ development:
   pool: 5
   host: 'localhost'
   password: "password"
-
+  template: template0
