@@ -3,6 +3,7 @@
 # http://www.postgresqltutorial.com/postgresql-update/
 # Profile pic how to https://www.w3schools.com/css/tryit.asp?filename=trycss_css_image_overlay_opacity
 
+
 require 'bundler'
 Bundler.require
 require "sinatra"
