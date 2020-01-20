@@ -25,7 +25,7 @@
             <a class="nav-link" href="/">Log Out</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/show_all">All Waddles</a>
+            <a class="nav-link" href="/show_all/<%=@id%>">All Waddles</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#results">My Account</a>
@@ -71,8 +71,8 @@
                       <hr>
                       <a href = "/edit/<%=@id%>" class = "btn btn-xl btn-outline">Edit Account</a>
                       <hr>
-                      <a href = "/delete>" class = "btn btn-xl btn-outline">Delete Account</a>
-                      <p>This is cannot be undone</p>
+                      <!--<a href = "/delete>" class = "btn btn-xl btn-outline">Delete Account</a>-->
+                      <!--<p>This is cannot be undone</p>-->
                     </div>
                   </div>
                   </div>
@@ -107,8 +107,7 @@
           </div>
         </div>
         <div clas = "row">
-          <input type="hidden" name="id" value="<%=@id%>">
-          <a href = "/show_all" class = "btn btn-xl btn-outline" style="color: black" !important target="_blank">See All Waddles</a>
+          <a href = "/show_all/<%=@id%>" class = "btn btn-xl btn-outline" style="color: black" !important target="_blank">See All Waddles</a>
         </div>
       </div>
       </section>

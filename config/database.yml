@@ -6,4 +6,14 @@ development:
   pool: 5
   host: 'localhost'
   password: "password"
-
+  template: template0
+  
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: waddle_test
+  username: 'ubuntu'
+  pool: 5
+  host: 'localhost'
+  password: "password"
+  template: template0

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>No Waddles Available</title>
+    <title>Feedback</title>
     <link rel="shortcut icon" href="img/penguin-logo.ico" length = 16px width = 16px>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
@@ -21,16 +21,10 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/">Log Out</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/show_all/<%=@id%>">All Waddles</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#results-list">Results</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/account/<%=@id%>">My Account</a>
+            <a class="nav-link" href="/login">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
@@ -41,42 +35,12 @@
     <section class="header" style="background-image:url(/img/penguin-group.jpg);background-repeat:no-repeat;background-size:cover;background-color:linear-gradient(to left, #5CC8F2, #0487D9);">
       <div class="cta-content">
         <div class="container">
-          <h2 style="color:white !important"><%=@output%></h2>
+          <h2 style="color:white !important">Thank you for your feedback!</h2>
         </div>
       </div>
       <div class="overlay"></div>
     </section>
-
-    <section class="download bg-primary text-center" id="results-list">
-      <div class="container">
-        <div class="row">
-          <div class=" mx-auto">
-            <div class="section-heading text-center">
-          <h2>Create a new Waddle:</h2>
-          <hr>
-        </div>
-            <form method="POST" action="/create_groups">
-              <h4>Starting Location:</h4>
-              <input type="text" name="location" required>
-              <h4>Destination:</h4>
-              <input type="text" name="destination" required>
-              <h4>Time:</h4>
-              <p>Please include AM or PM</p>
-              <input type="text" name="time" required>
-              <h4>Method of Transport:</h4>
-              <input type="text" name="method" required>
-              <input type="hidden" name="id" value="<%=@id%>">
-              <h4></h4>
-              <input class = "btn btn-default" type="submit">
-              <hr>
-            </form>
-          </div>
-        </div>
-        <div clas = "row">
-          <a href = "/show_all" class = "btn btn-xl btn-outline" target="_blank">See All Waddles</a>
-        </div>
-      </div>
-      </section>
+    
       <section class="contact bg-primary" id="contact" style="background:#FF791D;">
       <div class="container">
         <h2>Contact</h2>
@@ -133,12 +97,7 @@
     <script src="../vendor/bootstrap/js/bootstrap.js"></script>
   
       <!-- Plugin JavaScript -->
-<<<<<<< HEAD
-    <script src="vendor/jquery-easing/jquery.easing.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-=======
     <script src="../vendor/jquery-easing/jquery.easing.js"></script>
     <script src="../js/new-age.js"></script>
->>>>>>> 35532cc4e0e97a99ad5e9ab5838aeac548bc3445
   </body>
 </html>

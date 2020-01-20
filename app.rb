@@ -2,12 +2,19 @@
 #   1 | Linda Weng  | 15  | myemail@gmail.com         |            | supersecretpassword | walking from Novi High School to Jamestown at 2:10 PM   
 # <Account id: 2, name: "Taylor Want", age: "25", email: "taylor.want@gmail.com", username: "taylorwant", password: "Seize@0pportunity", waddles: [], created_at: "2017-12-05 14:31:24", updated_at: "2017-12-05 14:31:24">
 #Post id: 1, location: "Novi High School", destination: "Jamestown", date: "walking", time: "2:10 PM", penguins: ["Linda Weng"], created_at: "2017-12-06 00:41:00", updated_at: "2017-12-09 02:51:19"
+# https://www.postgresql.org/docs/current/static/app-psql.html
+# https://www.postgresql.org/docs/9.1/static/tutorial-select.html
+# http://www.postgresqltutorial.com/postgresql-update/
+# Profile pic how to https://www.w3schools.com/css/tryit.asp?filename=trycss_css_image_overlay_opacity
+
+
 require 'bundler'
 Bundler.require
 require "sinatra"
 require "sinatra/activerecord"
 require "./models.rb"
 require "./modelsAccount.rb"
+require "./modelsFeedback.rb"
 require 'active_record'
 
 # puts ActiveRecord::Base.connection_config()
@@ -18,15 +25,16 @@ require 'active_record'
 #   username: 'ubuntu',
 #   password: "password",
 #   database: 'waddle'# 
-
-
+# get '/' do
+#     erb :index
+# end
 
 class ApplicationController < Sinatra::Base
     get '/' do
-        erb :index
+        erb :index #starts off at index, once loaded
     end
     
-    get '/show_all' do
+    get '/show_all/:id' do 
         @id = params[:id]
         erb :show_all
     end
@@ -38,7 +46,7 @@ class ApplicationController < Sinatra::Base
         erb :waddle_edit
     end
     
-    get '/account/:id' do
+    get '/account/:id' do #loads account info
         @id = params[:id]
         @userAccount = Account.find(@id)
         @name = @userAccount.name
@@ -50,11 +58,11 @@ class ApplicationController < Sinatra::Base
         erb :account
     end
     
-    get '/login' do
+    get '/login' do #loads page
         erb :login
     end
     
-    get '/sign_up' do
+    get '/sign_up' do #loads page
         erb :sign_up
     end
     
@@ -63,12 +71,17 @@ class ApplicationController < Sinatra::Base
         erb :edit
     end
     
-    post '/login' do
+    post '/feedback' do
+        Feedback.create(name: params[:name], email: params[:email], feedback: params[:feedback])
+        erb :feedback
+    end
+    
+    post '/login' do #executes at /login
         @username = params[:username]
         @password = params[:password]
         count = 0
         @accounts = Account.all
-        @accounts.each do |account|
+        @accounts.each do |account| #checks all accounts for match
             if account.username == @username and account.password == @password
                 @id = account.id
                 puts @id
@@ -141,14 +154,18 @@ class ApplicationController < Sinatra::Base
         @userAccount = Account.find(@id)
         @waddles = @userAccount.waddles
         @name = @userAccount.name
-        @userAccount.update(waddles: @waddles.delete(@name))
         if @waddles.length == 1
             @userAccount.update(waddles: [])
         end
-        @post.update(penguins: @penguins.to_a - [@name])
         if @penguins.length == 1
             @post.update(penguins: [])
         end
+        @waddles.each do |waddle|
+            if (waddle.include? @post.location) && (waddle.include? @post.destination) && (waddle.include? @post.date) && (waddle.include? @post.time)
+                @userAccount.update(waddles: @waddles - [waddle])
+            end
+        end
+        @post.update(penguins: @penguins.to_a - [@name])
         @name = @userAccount.name
         @age = @userAccount.age
         @email = @userAccount.email
@@ -269,12 +286,11 @@ class ApplicationController < Sinatra::Base
             @waddles = @userAccount.waddles
             @penguins = @post.penguins
             @post.update(penguins: @penguins.push(@name))
-            @userAccount.update(waddles: @waddles.push((@post.date + " from " + @post.location + " to " + @post.destination + " at " + @post.time)))
+            @userAccount.update(waddles: @waddles.push((@post.date + " from " + @post.location + " to " + @post.destination + " at " + @post.time))) #+ ":" + "https://www.google.com/maps/place/#{@post.location.gsub(" ", "+")}")))
             erb :show 
         end
     end
 end
-# })
 
 
 class ApplicationController < Sinatra::Base
@@ -362,13 +378,13 @@ class ApplicationController < Sinatra::Base
         @id = @userAccount.id
         @username = params[:username]
         @name = params[:name]
-        @age = params[:age]
+    @age = params[:age]
         @email = params[:email]
         @waddles = ""
         erb :account
     end 
 
-    post '/edit_account' do
+    post '/edit_account' do #updates to account
         @id = params[:id]
         @userAccount = Account.find(@id)
         if params[:name] != ""
@@ -378,7 +394,7 @@ class ApplicationController < Sinatra::Base
             @userAccount.update(age: params[:age])
         end
         if params[:email] != ""
-            @userAccount.update(email: params[:email])
+        @userAccount.update(email: params[:email])
         end
         if params[:password] != ""
             @userAccount.update(password: params[:password])
@@ -386,7 +402,7 @@ class ApplicationController < Sinatra::Base
         @name = @userAccount.name
         @age = @userAccount.age
         @email = @userAccount.email
-        @username = @userAccount.username
+    @username = @userAccount.username
         @password = @userAccount.password
         @waddles = @userAccount.waddles
         erb :account
@@ -460,7 +476,7 @@ class ApplicationController < Sinatra::Base
                 
             end
         end
-        @output = "Please Enter in Valid Waddle Info"
+    @output = "Please Enter in Valid Waddle Info"
         erb :results
     end
 
